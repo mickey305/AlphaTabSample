@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 選択されている -->
+    <item android:color="@color/white" android:state_selected="true" />
+    <item android:color="@color/white" android:state_focused="true" />
+    <item android:color="@color/white" android:state_active="true" />
+    <item android:color="@color/white" android:state_pressed="true" />
+    <!-- 選択されていない -->
+    <item android:color="@color/unfocus_text" android:state_selected="false" />
+    <item android:color="@color/unfocus_text" android:state_active="false" />
+    <item android:color="@color/unfocus_text" android:state_focused="false" />
+    <item android:color="@color/unfocus_text" android:state_pressed="false" />
+</selector>

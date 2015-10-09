@@ -1,0 +1,67 @@
+<resources>
+
+    <style name="CustomBaseTheme" parent="android:Theme.Holo.Light">
+        <item name="android:colorForegroundInverse">@android:color/white</item>
+        <item name="android:colorBackground">@color/DefaultBackground</item>
+        <item name="android:disabledAlpha">0.5</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:textColor">@color/DefaultText</item>
+
+        <item name="android:actionBarStyle">@style/CustomActionbar</item>
+        <item name="android:actionBarTabBarStyle">@style/CustomTabBar</item>
+        <item name="android:actionBarTabStyle">@style/CustomTab</item>
+        <item name="android:actionBarTabTextStyle">@style/CustomTabText</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="CustomBaseTheme">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- アクションバーのスタイル -->
+    <style name="CustomActionbar">
+        <item name="android:background">@color/PrimaryColor</item>
+        <item name="android:titleTextStyle">@style/CustomActionbar.TitleText</item>
+        <item name="android:subtitleTextStyle">@style/CustomActionbar.SubTitleText</item>
+        <item name="android:displayOptions">useLogo|showHome|showTitle</item>
+        <!--<item name="android:displayOptions">useLogo|showTitle</item>-->
+        <item name="android:height">?android:attr/actionBarSize</item>
+    </style>
+    <!-- アクションバー内のタイトルのスタイル -->
+    <style name="CustomActionbar.TitleText"
+        parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+    <!-- アクションバー内のサブタイトルのスタイル -->
+    <style name="CustomActionbar.SubTitleText"
+        parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/unfocus_text</item>
+        <item name="android:textColorPrimary">@color/unfocus_text</item>
+        <item name="android:textColorSecondary">@color/unfocus_text</item>
+    </style>
+
+    <!-- タブのスタイル -->
+    <style name="CustomTab" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:showDividers">none</item>
+        <item name="android:measureWithLargestChild">true</item>
+        <item name="android:background">@drawable/style_tab_bkg_selector</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- タブバーのスタイル -->
+    <style name="CustomTabBar" parent="@android:style/Widget.Holo.ActionBar.TabBar">
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerPadding">0dp</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <!-- タブ内のタイトルのスタイル -->
+    <style name="CustomTabText" parent="@android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:textColor">@drawable/style_tab_text_selector</item>
+    </style>
+
+</resources>

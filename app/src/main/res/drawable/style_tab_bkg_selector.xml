@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- フォーカスされていないステータス -->
+    <item
+        android:drawable="@color/PrimaryColor"
+        android:state_focused="false"
+        android:state_pressed="false"
+        android:state_selected="false" />
+    <item
+        android:drawable="@drawable/style_tab_underline"
+        android:state_focused="false"
+        android:state_pressed="false"
+        android:state_selected="true" />
+    <!-- フォーカスされたステータス -->
+    <item
+        android:drawable="@color/PrimaryColor"
+        android:state_focused="true"
+        android:state_pressed="false"
+        android:state_selected="false" />
+    <item
+        android:drawable="@drawable/style_tab_underline"
+        android:state_focused="true"
+        android:state_pressed="false"
+        android:state_selected="true" />
+
+    <!-- 押された時の振る舞い -->
+    <!-- フォーカスされていないステータス -->
+    <item
+        android:drawable="@color/PrimaryColor"
+        android:state_focused="false"
+        android:state_pressed="true"
+        android:state_selected="false" />
+    <item
+        android:drawable="@drawable/style_tab_underline"
+        android:state_focused="false"
+        android:state_pressed="true"
+        android:state_selected="true" />
+    <!-- フォーカスされていないステータス -->
+    <item
+        android:drawable="@color/PrimaryColor"
+        android:state_focused="true"
+        android:state_pressed="true"
+        android:state_selected="false" />
+    <item
+        android:drawable="@drawable/style_tab_underline"
+        android:state_focused="true"
+        android:state_pressed="true"
+        android:state_selected="true" />
+</selector>

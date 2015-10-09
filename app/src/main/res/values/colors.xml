@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--アクションバー-->
+    <color name="PrimaryColor">#F4A016</color>
+    <color name="PrimaryColorLight">@android:color/holo_orange_light</color>
+    <!--基本の画面背景色-->
+    <color name="DefaultBackground">#e7e7e7</color>
+    <!--基本のテキストの色-->
+    <color name="DefaultText">#444</color>
+    <color name="SecondText">#757575</color>
+    <!--基本の選択しているタブなどの表示-->
+    <color name="current_tab">#36B9BE</color>
+    <!--その他-->
+    <color name="clear">#0fff</color>
+    <color name="red">#f00</color>
+    <color name="green">#0f0</color>
+    <color name="blue">#00f</color>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="tab">#F2F3F3</color>
+    <color name="unfocus_text">#77ffffff</color>
+</resources>
