@@ -31,20 +31,16 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        for(Class clz: this.classes) {
-            if(this.classes[position].equals(clz)) {
-                // フラグメントインスタンス生成
+        // フラグメントインスタンス生成
 
-                /*
-                 * アクティビティからフラグメントへオブジェクトを渡す場合には、このあたりにコールバック処理を記述
-                 * する必要があると思う。受け渡しをするオブジェクトには、Serializableインターフェースを実装する
-                 * 必要があると書いてあった。
-                 * 参考：http://yusuke-hata.hatenablog.com/entry/2014/12/01/002040
-                 */
-                return Fragment.instantiate(this.context, clz.getName());
-            }
-        }
-        return null;
+        /*
+         * （メモ）
+         * アクティビティからフラグメントへオブジェクトを渡す場合には、このあたりにコールバック処理を記述する
+         * 必要があると思う。受け渡しをするオブジェクトには、Serializableインターフェースを実装する必要があると
+         * 書いてあった。
+         * 参考：http://yusuke-hata.hatenablog.com/entry/2014/12/01/002040
+         */
+        return Fragment.instantiate(this.context, this.classes[position].getName());
     }
 
     @Override
