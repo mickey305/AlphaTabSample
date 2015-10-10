@@ -1,50 +1,62 @@
 package com.example.alphatabsample;
 
 import android.app.ActionBar;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class AlphaTabActivity extends Activity {
-    private AlphaTabSampleApplication app;
-    private ActionBar actionBar;
+public class AlphaTabActivity extends FragmentActivity implements ActionBar.TabListener {
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alpha_tab_activity);
 
-        app = (AlphaTabSampleApplication) getApplication();
-
         // アクションバーの取得
-        actionBar = this.getActionBar();
+        final ActionBar actionBar = this.getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setTitle("TabTestApp");
         actionBar.setSubtitle("プロジェクト１");
         // タブに表示する文字の配列
         final String[] tabTitles = {"イングランド", "北アイルランド", "スコットランド", "ウェールズ"};
-        // タブリスナーのリスト
-        final TabConnector[] tabConnectors = new TabConnector[4];
-        tabConnectors[0] = new TabConnector<TabFirstFragment>(this, "tag1", TabFirstFragment.class);
-        tabConnectors[1] = new TabConnector<TabSecondFragment>(this, "tag2", TabSecondFragment.class);
-        tabConnectors[2] = new TabConnector<TabThirdFragment>(this, "tag3", TabThirdFragment.class);
-        tabConnectors[3] = new TabConnector<TabFourthFragment>(this, "tag4", TabFourthFragment.class);
-        for (int position = 0; position < tabTitles.length; position++) {
-            String tabTitle = tabTitles[position];
-            TabConnector tabConnector = tabConnectors[position];
+        // フラグメントクラスの配列
+        final Class[] classes = {
+                TabFirstFragment.class,
+                TabSecondFragment.class,
+                TabThirdFragment.class,
+                TabFourthFragment.class
+        };
+        TabsPagerAdapter pagerAdapter = new TabsPagerAdapter(
+                this, getSupportFragmentManager(), tabTitles, classes);
+        viewPager = (ViewPager) findViewById(R.id.container_pager);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(
+                    int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        for (int i = 0; i < pagerAdapter.getCount(); i++) {
             // アクションバーにタブを追加する
-            actionBar.addTab(actionBar.newTab().setText(tabTitle).setTabListener(tabConnector));
+            actionBar.addTab(
+                    actionBar.newTab().setText(pagerAdapter.getPageTitle(i)).setTabListener(this)
+            );
         }
-        int tabPosition = app.getAlphaTabPosition();
-        actionBar.selectTab(actionBar.getTabAt(tabPosition));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        app.setAlphaTabPosition(actionBar.getSelectedTab().getPosition());
     }
 
     @Override
@@ -60,5 +72,20 @@ public class AlphaTabActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
     }
 }
