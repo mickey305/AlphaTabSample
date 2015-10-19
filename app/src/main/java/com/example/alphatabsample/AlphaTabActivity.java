@@ -1,12 +1,15 @@
 package com.example.alphatabsample;
 
 import android.app.ActionBar;
-import android.support.v4.app.FragmentActivity;
 import android.app.FragmentTransaction;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Spinner;
 
 public class AlphaTabActivity extends FragmentActivity implements ActionBar.TabListener {
     private ViewPager viewPager;
@@ -20,7 +23,12 @@ public class AlphaTabActivity extends FragmentActivity implements ActionBar.TabL
         final ActionBar actionBar = this.getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setTitle("TabTestApp");
-        actionBar.setSubtitle("プロジェクト１");
+
+        int titleId = Resources.getSystem().getIdentifier("action_bar_title", "id", "android");
+        View titleView = findViewById(titleId);
+        Spinner spinnerView = (Spinner) getLayoutInflater().inflate(R.layout.spinner_layout, null);
+        ViewGroupUtils.replaceView(titleView, spinnerView);
+
         // タブに表示する文字の配列
         final String[] tabTitles = {"イングランド", "北アイルランド", "スコットランド", "ウェールズ"};
         // フラグメントクラスの配列
